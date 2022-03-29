@@ -1,11 +1,8 @@
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Linq;
-using System.Collections.ObjectModel;
 using System.Collections.Generic;
 
 namespace TestProject1
