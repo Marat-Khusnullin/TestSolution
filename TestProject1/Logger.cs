@@ -9,16 +9,9 @@ namespace TestProject1
 {
     internal class Logger
     {
-        private string filePath;
-
-        public Logger(string fileName)
+        public static void Log(int stepNumber, string pageTitle, string pageUrl, string message = "")
         {
-            filePath = @".\" + fileName;
-        }
-
-        public void Log(int stepNumber, string pageTitle, string pageUrl, string message = "")
-        {
-            File.AppendAllText(filePath, $"Шаг {stepNumber}, название статьи: {pageTitle}, ссылка: {pageUrl} {message}" + "\n");
+            File.AppendAllText(@".\logs.txt", $"Шаг {stepNumber}, название статьи: {pageTitle}, ссылка: {pageUrl} {message}" + "\n");
         }
     }
 }

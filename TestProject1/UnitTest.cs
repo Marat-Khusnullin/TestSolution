@@ -12,7 +12,6 @@ namespace TestProject1
         private WebDriver driver;
         private string baseUrl;
         private WikipediaPage wikipediaPage;
-        private Logger logger;
         private int stepsCount = 0;
 
         [SetUp]
@@ -20,7 +19,6 @@ namespace TestProject1
         {
             driver = new ChromeDriver();
             baseUrl = "https://ru.wikipedia.org/";
-            logger = new Logger("logs.txt");
         }
 
         [Test]
@@ -37,7 +35,7 @@ namespace TestProject1
                 if (nodes.Contains(wikipediaPage.GetArticleName()))
                 {
                     wikipediaPage.ClickRandomArticleButton();
-                    logger.Log(stepsCount++, wikipediaPage.GetArticleName(), driver.Url, "Наткнулись на цикл! Статья сбросилась на случайную!");
+                    Logger.Log(stepsCount++, wikipediaPage.GetArticleName(), driver.Url, "Наткнулись на цикл! Статья сбросилась на случайную!");
                     nodes.Clear();
                 }
                 nodes.Add(wikipediaPage.GetArticleName());
@@ -48,12 +46,12 @@ namespace TestProject1
                 try
                 {
                     ClickOnFirstLinkInMainInfo();
-                    logger.Log(stepsCount++, wikipediaPage.GetArticleName(), driver.Url);
+                    Logger.Log(stepsCount++, wikipediaPage.GetArticleName(), driver.Url);
                 }
                 catch (NoSuchElementException e)
                 {
                     wikipediaPage.ClickRandomArticleButton();
-                    logger.Log(stepsCount++, wikipediaPage.GetArticleName(), driver.Url, "Статья неудачного формата :(. Статья сбросилась на случайную!");
+                    Logger.Log(stepsCount++, wikipediaPage.GetArticleName(), driver.Url, "Статья неудачного формата :(. Статья сбросилась на случайную!");
                     nodes.Clear();
                 }
             } while (!wikipediaPage.GetArticleName().ToLower().Contains("философия"));
