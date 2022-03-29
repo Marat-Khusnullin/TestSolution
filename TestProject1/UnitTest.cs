@@ -94,7 +94,7 @@ namespace TestProject1
         //„то €вл€етс€ словом на русском и не €вл€етс€ ссылкой на несуществующую статью. 
         private bool CheckLinkElement(IWebElement element)
         {
-            return !element.Text.Contains('.') && !element.Text.Contains('[') && !element.GetAttribute("Title").Contains(".ogg") && IsStringRussian(element.Text) && !element.GetAttribute("href").Contains(".oga") && !element.GetAttribute("class").Equals("new");
+            return IsStringRussian(element.Text) && !element.GetAttribute("Title").Contains(".ogg") && !element.GetAttribute("href").Contains(".oga") && !element.GetAttribute("class").Equals("new");
         }
 
         //ѕроверка регул€ркой, что ссылка €вл€етс€ словом на русском, может иметь пробелы и дефис.
